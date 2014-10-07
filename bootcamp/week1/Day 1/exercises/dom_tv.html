@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>TV</title>
+	<script>
+		function TV(make, model, screenSize, resolution)
+			{
+			this.make = make;
+			this.model = model;
+			this.screenSize = screenSize;
+			this.resolution = resolution;
+			this.isOn = false;
+			this.volumeLevel = 0;
+			this.currentChannel = "3";
+			this.changeChannel = function(channel){
+				if(this.isOn)
+					this.currentChannel = channel;
+			};
+			this.changeVolume = function(volume){
+				if(this.isOn)
+					if(volume >= 0 && volume <= 100)
+						this.volumeLevel = volume;
+			};
+			this.power = function(){
+				this.isOn = !this.isOn;
+			};
+	}
+
+	var samsung = new TV('Samsung', 'CN-1500', 37, '1080P');
+	</script>
+</head>
+<body>
+	<h1>TV</h1>
+
+	<label for="make">Brand</label>
+	<input type="text" id="make"/>
+	<br>
+	<label for="model">Model</label>
+	<input type="text" id="model" />
+	<br>
+	<label for="screenSize">Screen Size</label>
+	<input type="text" id="screenSize"/>
+	<br>
+	<label for="resolution">Resolution</label>
+	<input type="text" id="resolution" />
+	<br>
+	<label for="volumeLevel">Volume Level</label>
+	<select name="volumeLevel" id="volumeLevel">
+	</select>
+
+	<script>
+		var volumeLevel = document.getElementById('volumeLevel');
+		var option = null;
+		for(var i = 1; i <= 100; i++)
+		{
+			option = document.createElement('option');
+			option.value = i;
+			option.innerHTML = i;
+			volumeLevel.appendChild(option);
+
+		}
+		var make = document.getElementById('make');
+		make.value = samsung.make;
+	</script>
+</body>
+</html>
