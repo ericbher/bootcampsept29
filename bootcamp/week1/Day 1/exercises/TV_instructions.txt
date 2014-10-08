@@ -1,0 +1,9 @@
+Currently:
+
+1. Right now this just reads from our Object we created
+2. Finish reading values from the object into the HTML input fields
+
+
+Goals
+How can we use this HTML form to create more TVs for us?
+Adding the Submit button we should create a new TV.

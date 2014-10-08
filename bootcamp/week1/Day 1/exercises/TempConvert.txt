@@ -1,0 +1,21 @@
+Create a page with 3 inputs and 2 submit buttons
+
+One for F
+One for C
+One for Result/Conversion
+
+My Buttons: C to F, F to C
+
+Create the necessary function to perform to grab the values from the form fields
+and calculate the value then display it in the result input
+
+document.getElementById
+
+onclick
+
+Example: 
+
+F: 98.6
+
+Result: 37 C
+

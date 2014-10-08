@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>TV</title>
+	<script>
+		var televisions = [];
+		function TV(make, model, screenSize, resolution)
+			{
+			this.make = make;
+			this.model = model;
+			this.screenSize = screenSize;
+			this.resolution = resolution;
+			this.isOn = false;
+			this.volumeLevel = 53;
+			this.currentChannel = 69;
+			this.changeChannel = function(channel){
+				if(this.isOn)
+					this.currentChannel = channel;
+			};
+			this.changeVolume = function(volume){
+				if(this.isOn)
+					if(volume >= 0 && volume <= 100)
+						this.volumeLevel = volume;
+			};
+			this.power = function(){
+				this.isOn = !this.isOn;
+			};
+	}
+
+		function createTV()
+		{
+			var make = document.getElementById('make');
+			var model = document.getElementById('model');
+			var screenSize = document.getElementById('screenSize');
+			var resolution = document.getElementById('resolution');
+			var volumeLevel = document.getElementById('volumeLevel');
+			var channel = document.getElementById('channel');
+
+			televisions.push(new TV(make.value, model.value,
+			screenSize.value, resolution.value));
+
+			make.value = '';
+			model.value = '';
+			screenSize.value = '';
+			resolution.value = '';
+			volumeLevel.selectedIndex = 0;
+			channel.selectedIndex = 0;
+		}
+	</script>
+</head>
+<body>
+	<h1>TV</h1>
+
+	<label for="make">Brand</label>
+	<input type="text" id="make"/>
+	<br>
+	<label for="model">Model</label>
+	<input type="text" id="model" />
+	<br>
+	<label for="screenSize">Screen Size</label>
+	<input type="text" id="screenSize"/>
+	<br>
+	<label for="resolution">Resolution</label>
+	<input type="text" id="resolution" />
+	<br>
+	<label for="volumeLevel">Volume Level</label>
+	<select name="volumeLevel" id="volumeLevel">
+	</select>
+	<br>
+	<label for="channel">Channel</label>
+	<select name="channel" id="channel">
+	</select>
+	<br>
+	<input type="submit" value="Create TV" onclick="createTV()"/>
+
+	<script>
+		var televisions = [];
+		var volumeLevel = document.getElementById('volumeLevel');
+		var option = null;
+		for(var i = 0; i <= 100; i++)
+		{
+			option = document.createElement('option'); //Creates Option Element
+			option.value = i; //Sets the value to i
+			option.innerHTML = i; //Sets the Label to i
+			volumeLevel.appendChild(option); //Adds the child to the parent element
+		}
+
+		var channel = document.getElementById('channel');
+		var option = null;
+		for(var i = 0; i <= 69; i++)
+		{
+			option = document.createElement('option'); //Creates Option Element
+			option.value = i; //Sets the value to i
+			option.innerHTML = i; //Sets the Label to i
+			channel.appendChild(option); //Adds the child to the parent element
+		}
+
+		var otherInputs = ['HDMI 1', 'HDMI 2', 'S Video', 'Component'];
+		for(var j = 0; j < otherInputs.length; j++)
+		{
+			option = document.createElement('option');
+			option.value = otherInputs[j];
+			option.innerHTML = otherInputs[j];
+			channel.appendChild(option);
+		}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+</head>
+<body>
+	<label for="fahren">Fahrenheit</label>
+	<input type="text" name="fahren" id="fahren" />
+	<br>
+	<label for="celsius">Celsius</label>
+	<input type="text" name="celsius" id="celsius" />
+	<br>
+	<label for="result">Result</label>
+	<input type="text" id="result" />
+	<br>
+	<input type="submit" value="Convert F to C" onclick="convertFtoC()"/>
+	<input type="submit" value="Convert C to F" onclick="convertCtoF()"/>
+	<script>
+		function convertFtoC()
+		{
+			var fahren = document.getElementById('fahren');
+			var result = document.getElementById('result');
+			if( fahren.value >= 212 )
+				fahren.style.backgroundColor = 'red';
+			else if( fahren.value <= 32 )
+				fahren.style.backgroundColor = 'blue';
+			else
+				fahren.style.backgroundColor = 'yellow';
+
+			result.value = ( (fahren.value - 32)/1.8 ).toFixed(1) + unescape('&deg;');
+		}
+
+		function convertCtoF()
+		{
+			var celsius = document.getElementById('celsius');
+			var result = document.getElementById('result');
+			if( celsius.value >= 100 )
+				celsius.style.backgroundColor = 'red';
+			else if( celsius.value <= 0)
+				celsius.style.backgroundColor = 'blue';
+			else
+				celsius.style.backgroundColor = 'yellow';
+			result.value = ( (celsius.value * 1.8) + 32 ).toFixed(1) + '&deg;';
+		}
+	</script>
+</body>
+</html>
